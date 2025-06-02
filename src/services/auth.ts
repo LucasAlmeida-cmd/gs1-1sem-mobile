@@ -11,10 +11,10 @@ const STORAGE_KEYS = {
 
 
 // Admin mockado
-const mockAdmin = {
-  id: 'admin',
-  name: 'Administrador',
-  email: 'admin',
+const mockUser = {
+  id: 'user',
+  name: 'Usuário',
+  email: 'user@email',
   role: 'admin' as const,
   image: 'https://randomuser.me/api/portraits/men/3.jpg',
 };
@@ -27,22 +27,21 @@ let registeredPatios: Patio[] = [];
 
 export const authService = {
   async signIn(credentials: LoginCredentials): Promise<AuthResponse> {
-    // Verifica se é o admin
-    if (credentials.email === mockAdmin.email && credentials.password === 'admin') {
+    if (credentials.email === mockUser.email && credentials.password === 'user') {
       return {
-        user: mockAdmin,
+        user: mockUser
+      ,
         token: 'admin-token',
       };
     }
 
-    // Verifica se é um paciente registrado
+
     const patient = registeredUsers.find(
       (p) => p.email === credentials.email
     );
     if (patient) {
-      // Verifica a senha do paciente
+
       if (credentials.password === patient.password) {
-        // Remove a senha do objeto antes de retornar
         const { password, ...patientWithoutPassword } = patient;
         return {
           user: patientWithoutPassword,

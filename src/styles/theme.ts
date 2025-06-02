@@ -12,7 +12,8 @@ export default {
      white: '#FFFFFF',
      border: '#DEE2E6',
      verde: '#00FF3C',
-     fundoPadrao: '#282828',
+     titulo: '#1D617E',
+     fundoPadrao: '#83ACBF',
      fundoCardPatio: '#92929'
   },
   typography: {

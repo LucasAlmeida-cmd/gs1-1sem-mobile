@@ -39,7 +39,7 @@ const Header: React.FC = () => {
       </UserInfo>
       <View
           style={{
-            borderBottomColor: '#FFFFFF',
+            borderBottomColor: '#000000',
             borderBottomWidth: 1,
             marginVertical: 20,
             marginHorizontal: -16, 
@@ -74,14 +74,14 @@ const TextContainer = styled.View`
 
 const WelcomeText = styled.Text`
   font-size: 14px;
-  color: ${theme.colors.verde};
+  color: ${theme.colors.titulo};
   opacity: 0.7;
 `;
 
 const UserName = styled.Text`
   font-size: 18px;
   font-weight: bold;
-  color: ${theme.colors.verde};
+  color: ${theme.colors.titulo};
 `;
 
 export default Header;

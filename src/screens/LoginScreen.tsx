@@ -45,7 +45,7 @@ const LoginScreen: React.FC = () => {
 
   return (
     <Container>
-      <Title>MotoFindr</Title>
+      <Title>Clima Conecta</Title>
 
       <Input
         placeholder="Email"
@@ -93,18 +93,18 @@ const LoginScreen: React.FC = () => {
         <View style={{
           flex: 1,
           height: 2,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#000000'
         }} />
         <Text style={{
           marginHorizontal: 10,
-          color: '#ffffff',
+          color: '#000000',
           fontSize: 10,
           fontFamily: 'KdamThmorPro'
         }}>OU</Text>
         <View style={{
           flex: 1,
           height: 2,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#000000'
         }} />
       </View>
 
@@ -144,23 +144,23 @@ const styles = {
   },
   inputContainer: {
     borderWidth: 1,
-    borderColor: '#929292',
+    borderColor: '#000000',
     borderRadius: 10,
     backgroundColor: theme.colors.fundoPadrao,
   },
   inputText: {
     fontFamily: 'KdamThmorPro',
-    color: '#929292',
+    color: '#000000',
     fontSize: 16,
     paddingLeft: 10,
   },
   inputTextEnviar: {
     fontFamily: 'KdamThmorPro',
-    color: '#282828',
+    color: '#000000',
   },
   inputTextEnviarLogin: {
     fontFamily: 'KdamThmorPro',
-    color: '#929292',
+    color: '#000000',
   },
 
   button: {
@@ -168,7 +168,7 @@ const styles = {
     width: '95%',
   },
   buttonStyle: {
-    backgroundColor: theme.colors.verde,
+    backgroundColor: theme.colors.titulo,
     paddingVertical: 10,
     height: 50,
     borderRadius: 10,
@@ -179,7 +179,7 @@ const styles = {
     height: 50,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#929292',
+    borderColor: '#000000',
   },
   registerButton: {
     marginTop: 10,
@@ -191,7 +191,7 @@ const styles = {
   },
   pass: {
     textAlign: 'left' as const,
-    color: theme.colors.verde,
+    color: theme.colors.titulo,
     fontSize: 14,
     alignSelf: 'flex-start',
     marginLeft: 10,
@@ -200,12 +200,12 @@ const styles = {
   hint: {
     marginTop: 20,
     textAlign: 'center' as const,
-    color: '#929292',
+    color: '#000000',
   },
   credentials: {
     marginTop: 10,
     textAlign: 'center' as const,
-    color: '#929292',
+    color: '#000000',
     fontSize: 12,
   },
 };
@@ -223,7 +223,7 @@ const Title = styled.Text`
   font-weight: bold;
   text-align: center;
   margin-bottom: 30px;
-  color: ${theme.colors.verde};
+  color: ${theme.colors.titulo};
   font-family: 'KdamThmorPro';
 `;
 
