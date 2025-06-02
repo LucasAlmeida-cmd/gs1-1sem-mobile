@@ -1,23 +1,19 @@
-# DOCUMENTAÇÃO CHALLENGE - MOBILE
-
-Este projeto é referente nossa solução para a empresa **Mottu**.
-
+# DOCUMENTAÇÃO GS - MOBILE
 
 ## Proposta do projeto: 
 
-  O projeto MotoFindr surge para resolver um desafio crítico enfrentado pela Mottu: a dificuldade de gerenciar e localizar motos dentro dos pátios 
-devido à imprecisão do GPS em espaços curtos e à falta de um sistema eficiente de registro. Atualmente, as entradas e saídas das motos são registradas 
-de forma simplificada (apenas com dados como chassi, placa e data), o que gera desorganização, ineficiência operacional e até riscos de perdas.
+O ClimaConecta é uma plataforma colaborativa que permite que comunidades registrem, compartilhem e monitorem condições climáticas em tempo real, promovendo conscientização e resposta rápida a eventos extremos (como enchentes, secas, tempestades etc.). 
 
-Para este sprint, nós criamos uma aplicação que atualmente tem cinco telas, para o usuário poder adicionar e excluir os pátios. Mas, nas próximas sprints, 
-haverá mais telas, onde ele poderá interagir até com os motoqueiros.
+Nas comunidades, a falta de informação rápida e confiável sobre enchentes e temporais é um problema grave que coloca vidas e propriedades em risco. Muitas vezes, os alertas oficiais não chegam a tempo ou são muito genéricos, sem detalhes sobre riscos específicos em cada rua ou viela. Quem está fora de casa, trabalhando ou estudando, muitas vezes só descobre que a enchente chegou quando já é tarde demais. 
+
+É aí que entra o ClimaConecta, uma plataforma feita pela comunidade e para a comunidade, onde os próprios moradores podem registrar e compartilhar informações em tempo real sobre alagamentos, tempestades e outros riscos climáticos. A ideia é simples: se o rio começa a subir, um morador abre o app, tira uma foto, marca a localização e posta um alerta. Esse aviso é imediatamente visto por todos que usam o ClimaConecta na região, permitindo que as pessoas se preparem ou tomem as providências necessárias. 
 
 
 O sistema permite:
-- Logar como admin
-- Consultar Pátios existentes 
-- Adicionar e excluir Pátios
-- Vizualizar perfil do admin
+- Logar como user
+- Consultar postagens existentes 
+- Adicionar e excluir Postagens
+- Vizualizar perfil do user
 
 
 ## Nome Integrantes
@@ -43,26 +39,26 @@ Para inicializar o projeto com expo, rodar o comando:
 Ele ira inicializar na porta *http://localhost:8081*
 
 A primeira tela que você irá ver será a tela de login, nela você encontrará algumas opções, algumas delas não estarão funcionando ainda, os campos são: esqueceu minha senha, entrar com google e entrar com github,
-eles serão implementados em sprints posteriores, para ter o acesso as outras funcionalidades o login de acesso vai estar na tela mas vou colocar aqui também, se tentar acessar com outras vai gerar um erro, pois esse admin esta mokado e não tem outros, pós login entrará na tela do Admin, onde tem 3 opções de escolha:
+eles não estão funcionando, para ter o acesso as outras funcionalidades o login de acesso vai estar na tela mas vou colocar aqui também, se tentar acessar com outras vai gerar um erro, pois esse user esta mokado e não tem outros, pós login entrará na tela do User, onde tem 3 opções de escolha:
 
 
 ```
-  Login: admin
-  Senha: admin
+  Login: user@email
+  Senha: user
 ```
 
 
-1- Consultar Pátios
-Onde terá uma lista de pátios cadastrados ou não que em cada pátio terá um borão de excluir e também haverá um botão de inserir pátio, onde vai poder inserir novos pátios e eles seram armazenados em memória.
+1- Mandar Postagem
+Onde terá uma lista de postagens já cadastrados ou não que em cada postagem terá um borão de excluir e também haverá um botão de inserir postagem, onde vai poder inserir novas postagens e eles seram armazenados em memória.
 
 2- Meu Perfil
-Onde terá informações sobre o admin como por exemplo o nome e a função.
+Onde terá informações sobre o user como por exemplo o nome e a função.
 
 3- Botão de sair.
 
 
 ## Link Figma: 
 A navegação não está funcional pois não conseguimos implementar pela falta de tempo, mas o senhor disse que não ia cobrar.
-https://www.figma.com/design/eCgS0WKfb2uH6ijMKgHO59/MotoFindr?node-id=13-3&t=kmdQQDYZvQpLoS5V-1
+https://www.figma.com/design/q5xTViqr1KYWB8gN2cFR7f/ClimaConecta?node-id=0-1&t=fqnJA4iRZJ82JpHq-1
 
 
