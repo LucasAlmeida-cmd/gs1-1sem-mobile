@@ -5,10 +5,12 @@
  * Tipos relacionados à autenticação e autorização
  */
 
+import { Image } from "react-native-elements/dist/image/Image";
+
 /**
  * Perfis de usuário disponíveis no sistema
  */
-export type UserRole = 'admin';
+export type UserRole = 'user';
 
 /**
  * Interface base do usuário
@@ -26,20 +28,20 @@ export interface BaseUser {
 /**
  * Interface do administrador
  */
-export interface Admin extends BaseUser {
-  role: 'admin';
+export interface User extends BaseUser {
+  role: 'user';
 }
 
 /**
  * Interface do usuário autenticado
  */
-export type User = Admin ;
 
-export interface Patio {
+export interface Postagem {
   id: string;
-  identificacao: string;
-  largura: string;
-  comprimento: string;
+  titulo: string;
+  localizacao: string;
+  horario: string;
+  descricao: string
 }
 
 /**
@@ -58,10 +60,11 @@ export interface RegisterData {
   email: string;
   password: string;
 }
-export interface RegisterDataPatio {
-  identificacao: string;
-  largura: string;
-  comprimento: string;
+export interface RegisterDataPostagem {
+  titulo: string;
+  localizacao: string;
+  horario: string;
+  descricao: string;
 }
 
 /**
@@ -79,6 +82,6 @@ export interface AuthContextData {
   user: User | null;
   loading: boolean;
   signIn: (credentials: LoginCredentials) => Promise<void>;
-  registerPatio: (data: RegisterDataPatio) => Promise<void>;
+  registerPostagem: (data: RegisterDataPostagem) => Promise<void>;
   signOut: () => Promise<void>;@rneui
 } 

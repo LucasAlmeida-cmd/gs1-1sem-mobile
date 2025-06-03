@@ -1,12 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { User, LoginCredentials, RegisterData, AuthResponse, Patio } from '../types/auth';
+import { User, LoginCredentials, RegisterData, AuthResponse, Postagem } from '../types/auth';
 
 // Chaves de armazenamento
 const STORAGE_KEYS = {
   USER: '@MotoFindr:user',
   TOKEN: '@MotoFindr:token',
   REGISTERED_USERS: '@MotoFindr:registeredUsers',
-  PATIOS: '@MotoFindr:patios',
+  POSTAGENS: '@MotoFindr:patios',
 };
 
 
@@ -15,14 +15,14 @@ const mockUser = {
   id: 'user',
   name: 'Usuário',
   email: 'user@email',
-  role: 'admin' as const,
+  role: 'user' as const,
   image: 'https://randomuser.me/api/portraits/men/3.jpg',
 };
 
 // Lista de usuários cadastrados (pacientes)
 let registeredUsers: (User & { password: string })[] = [];
 
-let registeredPatios: Patio[] = [];
+let registeredPatios: Postagem[] = [];
 
 
 export const authService = {
@@ -31,7 +31,7 @@ export const authService = {
       return {
         user: mockUser
       ,
-        token: 'admin-token',
+        token: 'user-token',
       };
     }
 
@@ -55,18 +55,18 @@ export const authService = {
 
 
 
-  async registerPatio(patio: Omit<Patio, 'id'>): Promise<Patio> {
+  async registerPostagem(postagem: Omit<Postagem, 'id'>): Promise<Postagem> {
     try {
-      const patiosJson = await AsyncStorage.getItem(STORAGE_KEYS.PATIOS);
-      const patios: Patio[] = patiosJson ? JSON.parse(patiosJson) : [];
+      const patiosJson = await AsyncStorage.getItem(STORAGE_KEYS.POSTAGENS);
+      const patios: Postagem[] = patiosJson ? JSON.parse(patiosJson) : [];
   
-      const newPatio: Patio = {
-        ...patio,
+      const newPatio: Postagem = {
+        ...postagem,
         id: `patio-${Date.now()}`, 
       };
   
       const updatedPatios = [...patios, newPatio];
-      await AsyncStorage.setItem(STORAGE_KEYS.PATIOS, JSON.stringify(updatedPatios));
+      await AsyncStorage.setItem(STORAGE_KEYS.POSTAGENS, JSON.stringify(updatedPatios));
   
       return newPatio;
     } catch (error) {
@@ -77,9 +77,9 @@ export const authService = {
   
 
 
-  async loadRegisteredPatios(): Promise<void> {
+  async loadRegisteredPostagens(): Promise<void> {
     try {
-      const patiosJson = await AsyncStorage.getItem(STORAGE_KEYS.PATIOS);
+      const patiosJson = await AsyncStorage.getItem(STORAGE_KEYS.POSTAGENS);
       if (patiosJson) {
         registeredPatios = JSON.parse(patiosJson);
       }

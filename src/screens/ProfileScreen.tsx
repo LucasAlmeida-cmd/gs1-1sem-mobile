@@ -64,16 +64,15 @@ const styles = {
     width: '100%',
   },
   buttonStyle:{
-    backgroundColor: 'transparent',
+    backgroundColor: theme.colors.titulo,
     paddingVertical: 10,
     height: 50,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#929292',
   },
   inputText: {
     fontFamily: 'KdamThmorPro',
-    color: '#929292',
+    color: '#000000',
   },
   logoutButton: {
     backgroundColor: theme.colors.error,
@@ -94,7 +93,7 @@ const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
   font-family: 'KdamThmorPro';
-  color: ${theme.colors.verde};
+  color: ${theme.colors.titulo};
   margin-bottom: 20px;
   text-align: center;
 `;
@@ -106,7 +105,7 @@ const ProfileCard = styled.View`
   margin-bottom: 20px;
   align-items: center;
   border-width: 1px;
-  border-color: ${theme.colors.border};
+  border-color: '#000000';
 `;
 
 const Avatar = styled.Image`
@@ -119,13 +118,13 @@ const Avatar = styled.Image`
 const Name = styled.Text`
   font-size: 20px;
   font-weight: bold;
-  color: ${theme.colors.white};
+  color: '#000000';
   margin-bottom: 8px;
 `;
 
 const Email = styled.Text`
   font-size: 16px;
-  color: ${theme.colors.white};
+  color: '#000000';
   margin-bottom: 8px;
 `;
 

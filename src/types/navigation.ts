@@ -14,7 +14,7 @@
  */
 export type RootStackParamList = {
   Login: undefined;
-  RegisterPatio: undefined;
+  Register: undefined;
   Home: undefined;
   Profile: undefined;
   AdminDashboard: undefined;

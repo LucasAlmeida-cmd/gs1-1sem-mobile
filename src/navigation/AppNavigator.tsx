@@ -7,9 +7,9 @@ import { RootStackParamList } from '../types/navigation';
 // Screens
 import LoginScreen from '../screens/LoginScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import AdminDashboardScreen from '../screens/AdminDashboardScreen';
+import AdminDashboardScreen from '../screens/UserDashboardScreen';
 import UserManagementScreen from '../screens/UserManagementScreen';
-import RegisterScreen from '../screens/RegisterScreenPatio';
+import RegisterScreen from '../screens/RegisterScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -33,7 +33,7 @@ export const AppNavigator: React.FC = () => {
           </>
         ) : (
           <>
-            {user.role === 'admin' && (
+            {user.role === 'user' && (
               <>
                 <Stack.Screen
                   name="AdminDashboard"
@@ -47,7 +47,7 @@ export const AppNavigator: React.FC = () => {
                 />
 
                 <Stack.Screen 
-                  name="RegisterPatio" 
+                  name="Register" 
                   component={RegisterScreen} 
                 />
               </>
