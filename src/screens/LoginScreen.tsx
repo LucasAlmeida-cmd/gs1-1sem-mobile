@@ -132,7 +132,7 @@ const LoginScreen: React.FC = () => {
         Use as credenciais de exemplo:
       </Text>
       <Text style={styles.credentials}>
-        Admin: admin/admin
+        User: user@email/user
       </Text>
     </Container>
   );
