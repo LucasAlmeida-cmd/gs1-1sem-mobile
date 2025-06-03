@@ -7,17 +7,19 @@ import { ViewStyle } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
+import Header from '../components/Header';
 
 type RegisterScreenProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'RegisterPatio'>;
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Register'>;
 };
 
 const RegisterScreen: React.FC = () => {
-  const { registerPatio } = useAuth();
+  const { registerPostagem: registerPostagem } = useAuth();
   const navigation = useNavigation<RegisterScreenProps['navigation']>();
-  const [identificacao, setIdentificacao] = useState('');
-  const [largura, setLargura] = useState('');
-  const [comprimento, setComprimento] = useState('');
+  const [titulo, setTitulo] = useState('');
+  const [localizacao, setLocalizacao] = useState('');
+  const [horario, setHorario] = useState('');
+  const [descricao, setDescricao] = useState('');
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -27,15 +29,16 @@ const RegisterScreen: React.FC = () => {
       setLoading(true);
       setError('');
 
-      if (!identificacao || !largura || !comprimento) {
+      if (!titulo || !localizacao || !horario || !descricao) {
         setError('Por favor, preencha todos os campos');
         return;
       }
 
-      await registerPatio({
-        identificacao,
-        largura,
-        comprimento,
+      await registerPostagem({
+        titulo: titulo,
+        localizacao: localizacao,
+        horario: horario,
+        descricao: descricao
       });
       navigation.navigate('UserManagement');
     } catch (err) {
@@ -46,13 +49,15 @@ const RegisterScreen: React.FC = () => {
   };
 
   return (
+
     <Container>
-      <Title>Inserir Pátio</Title>
+      <Header />
+      <Title>Inserir Postagem</Title>
 
       <Input
-        placeholder="Identificação"
-        value={identificacao}
-        onChangeText={setIdentificacao}
+        placeholder="Titulo"
+        value={titulo}
+        onChangeText={setTitulo}
         autoCapitalize="words"
         containerStyle={styles.input}
         inputContainerStyle={styles.inputContainer}
@@ -60,9 +65,9 @@ const RegisterScreen: React.FC = () => {
       />
 
       <Input
-        placeholder="Largura"
-        value={largura}
-        onChangeText={setLargura}
+        placeholder="Localização"
+        value={localizacao}
+        onChangeText={setLocalizacao}
         autoCapitalize="words"
         containerStyle={styles.input}
         inputContainerStyle={styles.inputContainer}
@@ -70,9 +75,18 @@ const RegisterScreen: React.FC = () => {
       />
 
       <Input
-        placeholder="Comprimento"
-        value={comprimento}
-        onChangeText={setComprimento}
+        placeholder="Horario"
+        value={horario}
+        onChangeText={setHorario}
+        containerStyle={styles.input}
+        inputContainerStyle={styles.inputContainer}
+        inputStyle={styles.inputText}
+      />
+
+      <Input
+        placeholder="Descrição"
+        value={descricao}
+        onChangeText={setDescricao}
         containerStyle={styles.input}
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.inputText}
@@ -106,13 +120,13 @@ const styles = {
   },
   inputContainer: {
     borderWidth: 1,
-    borderColor: '#929292',
+    borderColor: '#000000',
     borderRadius: 10,
     backgroundColor: theme.colors.fundoPadrao,
   },
   inputText: {
     fontFamily: 'KdamThmorPro',
-    color: '#929292',
+    color: '#000000',
     fontSize: 16,
     paddingLeft: 10,
   },
@@ -121,7 +135,7 @@ const styles = {
     width: '100%',
   },
   buttonStyle: {
-    backgroundColor: theme.colors.verde,
+    backgroundColor: theme.colors.titulo,
     paddingVertical: 10,
     height: 50,
     borderRadius: 10,
@@ -132,7 +146,7 @@ const styles = {
     height: 50,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#929292',
+    borderColor: '#000000',
   },
   inputTextEnviar: {
     fontFamily: 'KdamThmorPro',
@@ -140,7 +154,7 @@ const styles = {
   },
   inputTextVoltar: {
     fontFamily: 'KdamThmorPro',
-    color: '#929292',
+    color: '#000000',
   },
   backButton: {
     marginTop: 10,
@@ -164,7 +178,7 @@ const Title = styled.Text`
   font-weight: bold;
   text-align: center;
   margin-bottom: 30px;
-  color: ${theme.colors.verde};
+  color: ${theme.colors.titulo};
 `;
 
 const ErrorText = styled.Text`

@@ -22,6 +22,14 @@ interface Patio {
   comprimento: string;
 }
 
+interface Postagem {
+  id: string;
+  titulo: string;
+  localizacao: string;
+  horario: string;
+  descricao: string
+}
+
 interface StyledProps {
   role: string;
 }
@@ -29,16 +37,16 @@ interface StyledProps {
 const UserManagementScreen: React.FC = () => {
   const { user } = useAuth();
   const navigation = useNavigation<UserManagementScreenProps['navigation']>();
-  const [patios, setPatios] = useState<Patio[]>([]);
+  const [postagens, setPostagens] = useState<Postagem[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const loadPatios = async () => {
+  const loadPostagens = async () => {
     try {
-      const storedPatios = await AsyncStorage.getItem('@MotoFindr:patios');
-      if (storedPatios) {
-        const allPatios: Patio[] = JSON.parse(storedPatios);
-        const filteredPatios = allPatios;
-        setPatios(filteredPatios);
+      const storedPostagens = await AsyncStorage.getItem('@MotoFindr:patios');
+      if (storedPostagens) {
+        const allPostagens: Postagem[] = JSON.parse(storedPostagens);
+        const filteredPostagens = allPostagens;
+        setPostagens(filteredPostagens);
       }
     } catch (error) {
       console.error('Erro ao carregar usuários:', error);
@@ -54,7 +62,7 @@ const UserManagementScreen: React.FC = () => {
         const allPatios: Patio[] = JSON.parse(storedUsers);
         const updatedPatios = allPatios.filter(u => u.id !== patioId);
         await AsyncStorage.setItem('@MotoFindr:patios', JSON.stringify(updatedPatios));
-        loadPatios(); // Recarrega a lista
+        loadPostagens(); 
       }
     } catch (error) {
       console.error('Erro ao deletar usuário:', error);
@@ -64,7 +72,7 @@ const UserManagementScreen: React.FC = () => {
 
   useFocusEffect(
     React.useCallback(() => {
-      loadPatios();
+      loadPostagens();
     }, [])
   );
 
@@ -74,42 +82,47 @@ const UserManagementScreen: React.FC = () => {
       <ScrollView contentContainerStyle={styles.scrollContent}>
 
         <Button
-          title="Inserir Pátio"
-          onPress={() => navigation.navigate('RegisterPatio')}
+          title="Postar"
+          onPress={() => navigation.navigate('Register')}
           containerStyle={styles.button as ViewStyle}
           buttonStyle={styles.buttonStyle}
           titleStyle={styles.inputTextEnviar}
         />
 
-        <Title>Pátios Cadastrados</Title>
+        <Title>Postagens Antigas</Title>
 
         {loading ? (
-          <LoadingText>Carregando Pátios...</LoadingText>
-        ) : patios.length === 0 ? (
-          <EmptyText>Nenhum pátio cadastrado</EmptyText>
+          <LoadingText>Carregando Postagens...</LoadingText>
+        ) : postagens.length === 0 ? (
+          <EmptyText>Nenhuma postagem cadastrado</EmptyText>
         ) : (
-          patios.map((patio) => (
+          postagens.map((postagens) => (
 
-            <UserCard key={patio.id} 
+            <UserCard key={postagens.id} 
             bottomDivider
-            containerStyle={{ backgroundColor: '#404040'}}>
+            containerStyle={{ backgroundColor: '#1D617E'}}>
               <ListItem.Content>
-                <ListItem.Title style={styles.patioIdentificacao as TextStyle}>
-                  {patio.identificacao}
+                <ListItem.Title style={styles.postagemTitulo as TextStyle}>
+                 Titulo: {postagens.titulo}
                 </ListItem.Title>
 
-                <ListItem.Subtitle style={styles.patioLargura as TextStyle}>
-                  Largura: {patio.largura}
+                <ListItem.Subtitle style={styles.postagemLoc as TextStyle}>
+                  Localização: {postagens.localizacao}
                 </ListItem.Subtitle>
 
-                <ListItem.Subtitle style={styles.patioLargura as TextStyle}>
-                  Comprimento: {patio.comprimento}
+                <ListItem.Subtitle style={styles.postagemLoc as TextStyle}>
+                  Horário: {postagens.horario}
                 </ListItem.Subtitle>
+
+                <ListItem.Subtitle style={styles.postagemLoc as TextStyle}>
+                  Descrição: {postagens.descricao}
+                </ListItem.Subtitle>
+
 
                 <ButtonContainer>
                   <Button
                     title="Apagar"
-                    onPress={() => handleDeletePatio(patio.id)}
+                    onPress={() => handleDeletePatio(postagens.id)}
                     containerStyle={{ width: 'auto' }}
                     buttonStyle={styles.deleteButton}
                     titleStyle={styles.deleteButtonText}
@@ -142,7 +155,7 @@ const styles = {
     width: '100%',
   },
   buttonStyle: {
-    backgroundColor: theme.colors.verde,
+    backgroundColor: theme.colors.titulo,
     paddingVertical: 10,
     height: 50,
     borderRadius: 10,
@@ -161,7 +174,7 @@ const styles = {
   },
   inputTextEnviar: {
     fontFamily: 'KdamThmorPro',
-    color: '#282828',
+    color: '#000000',
   },
   backButton: {
     backgroundColor: theme.colors.secondary,
@@ -186,14 +199,14 @@ const styles = {
     color: '#000000',
     fontSize: 16,
   },
-  patioIdentificacao: {
+  postagemTitulo: {
     fontSize: 18,
     fontFamily: 'KdamThmorPro',
     fontWeight: 'bold',
     color: '#fff',
     marginBottom: 8,
   },
-  patioLargura: {
+  postagemLoc: {
     fontSize: 16,
     color: '#ffffff',
     fontFamily: 'KdamThmorPro',
@@ -212,18 +225,16 @@ const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
   font-family: 'KdamThmorPro';
-  color: ${theme.colors.verde};
+  color: '#000000';
   margin-bottom: 20px;
   text-align: center;
 `;
 
 const UserCard = styled(ListItem)`
-  background-color: #404040;
+  background-color: #1D617E;
   border-radius: 10px;
-  border-color: #929292;
   margin-bottom: 10px;
   padding: 15px;
-  border-width: 1px;
 `;
 
 const LoadingText = styled.Text`
